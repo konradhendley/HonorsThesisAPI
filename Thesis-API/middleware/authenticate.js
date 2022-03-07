@@ -20,7 +20,7 @@ const auth = async(req,res,next)=>{
    let userID = decoded.pk;
 
     //2 compare token with database
-    let query = `select userID, firstName, lastName, Email
+    let query = `select userID, firstName, lastName, email
     from users
     where userID = ${userID} and token = '${myToken}'`;
 
@@ -29,7 +29,7 @@ const auth = async(req,res,next)=>{
 
     //3 save user info in the request
     if(returnedUser[0]){
-      req.member = returnedUser[0];
+      req.users = returnedUser[0];
       next();
     }
     else{
