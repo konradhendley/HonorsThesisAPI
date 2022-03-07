@@ -111,12 +111,13 @@ try{
 }
 
 if(!result[0]){
-    return res.status(401).send("invalid user credentials");
+    return res.status(401).send("invalid user credentials no user");
 }
 let users = result[0];
 
 if(!bcrypt.compareSync(password, users.token)){
-    return res.status(401).send("invalid user credentials");
+    console.log(users.token)
+    return res.status(401).send("invalid user credentials no password");
 }
 
 let token = jwt.sign({pk:users.userID}, thesisConfig.JWT, {
