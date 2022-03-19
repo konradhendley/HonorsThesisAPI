@@ -152,6 +152,7 @@ app.get("/colleges", (req,res)=>{
         res.status(500).send();
     });
 });
+
 //route to get a specifc college
 app.get("/colleges/:pk", (req,res)=>{
     let pk = req.params.pk;
@@ -173,6 +174,7 @@ app.get("/colleges/:pk", (req,res)=>{
         res.status(500).send()
     });
 });
+
 //request to pull all the records on scholarships
 app.get("/scholarships", (req,res)=>{
     db.executeQuery(
@@ -238,7 +240,6 @@ app.post("/plans", auth, async (req,res)=>{
     let contributions = req.body.contributions;
     let income_misc = req.body.income_misc;
     let income_total = req.body.income_total;
-
 
     let insertQuery = 
     `Insert into plans (tuition, books,supplies,academic_misc,academic_total,rent,groceries,utilities,phone,
