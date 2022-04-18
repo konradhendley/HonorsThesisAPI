@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const db = require("./dbConnectExec.js")
 const thesisConfig = require('./config.js');
-const auth = require("./Thesis-API/middleware/authenticate.js")
+const auth = require("./middleware/authenticate")
 
 const app = express();
 app.use(express.json());
