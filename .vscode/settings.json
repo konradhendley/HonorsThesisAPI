@@ -1,7 +1,6 @@
 {
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
-        ".vscode{,/**}"
     ],
     "appService.defaultWebAppToDeploy": "/subscriptions/5c4ce670-c19b-4694-9c51-2a34d4385d1e/resourceGroups/HonorsThesis/providers/Microsoft.Web/sites/HonorsThesis-API",
     "appService.deploySubpath": "."

@@ -421,6 +421,14 @@ app.get("/plans/me", auth, async (req,res)=>{
             let scholarshipID = req.body.scholarshipID;
             let collegeID = req.body.collegeID;
 
+            let scholarshipCheckQuery = `SELECT *
+            from userScholarships
+            where scholarshipID = '${scholarshipID}' AND userID = ${req.users.userID} AND collegeID = ${collegeID}`;
+
+            let existingScholarship = await db.executeQuery(scholarshipCheckQuery);
+
+            if (existingScholarship[0]){return res.status(409).send("duplicate record")};
+
             let insertQuery = 
             `Insert into userScholarships (scholarshipID, userID, collegeID) 
 
@@ -439,7 +447,7 @@ app.get("/plans/me", auth, async (req,res)=>{
             //     //1 get member pk
                     pk = req.users.userID;
                     let getQuery = `select UserScholarships.recordID, UserScholarships.scholarshipID,
-                        UserScholarships.userID, UserScholarships.collegeID, colleges.name, scholarships.name
+                        UserScholarships.userID, UserScholarships.collegeID, colleges.name, scholarships.name, scholarships.link
                         from UserScholarships
                         LEFT JOIN colleges 
                         on colleges.collegeID = UserScholarships.CollegeID
