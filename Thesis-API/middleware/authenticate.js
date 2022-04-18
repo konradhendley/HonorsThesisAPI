@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
-const db = require("/Users/konradhendley/Desktop/Honors Thesis/dbConnectExec.js")
-const thesisConfig = require("/Users/konradhendley/Desktop/Honors Thesis/config.js");
+const db = require("dbConnectExec.js")
+const thesisConfig = require("config.js");
 
 const auth = async(req,res,next)=>{
     // console.log("in the middlewere", req.header("Authorization"));
